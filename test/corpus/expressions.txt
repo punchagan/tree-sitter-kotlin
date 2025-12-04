@@ -12,6 +12,23 @@ Multiplication expression
     (integer_literal)))
 
 ================================================================================
+Range expression
+================================================================================
+
+1..45
+1..<42
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (range_expression
+    (integer_literal)
+    (integer_literal))
+  (range_expression
+    (integer_literal)
+    (integer_literal)))
+
+================================================================================
 Safe Navigation
 ================================================================================
 
@@ -446,12 +463,12 @@ val comments = foo("//")
 val comments = foo("hello //")
 val comments = foo("// there")
 val comments = foo("hello // there")
-val comments = """ 
+val comments = """
   // hey there's a
-  
+
   /* comment or two here */
 """
-val comments = """ // and here """ 
+val comments = """ // and here """
 
 --------------------------------------------------------------------------------
 
@@ -589,11 +606,11 @@ If else-if else expression
 ================================================================================
 
 if (cond1) {
-	println("cond1")
+  println("cond1")
 } else if (cond2) {
-	println("cond2")
+  println("cond2")
 } else {
-	println("cond3")
+  println("cond3")
 }
 
 --------------------------------------------------------------------------------
