@@ -6158,7 +6158,7 @@
               "members": [
                 {
                   "type": "PATTERN",
-                  "value": "[01]"
+                  "value": "[01]+"
                 },
                 {
                   "type": "REPEAT",
@@ -6171,7 +6171,7 @@
                       },
                       {
                         "type": "PATTERN",
-                        "value": "[01]"
+                        "value": "[01]+"
                       }
                     ]
                   }
