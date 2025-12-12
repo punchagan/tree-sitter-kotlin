@@ -100,6 +100,12 @@ module.exports = grammar({
     [$.user_type, $.anonymous_function],
     //[$.user_type, $.function_type],
 
+    // ambiguity caused by 'suspend'
+    [$.function_modifier, $.simple_identifier],
+    [$._type_modifier, $.simple_identifier],
+    [$.delegation_specifier, $._type_modifier],
+    [$.delegation_specifier, $._type_modifier, $.simple_identifier],
+
     // ambiguity between annotated_lambda with modifiers and modifiers from var declarations
     [$.annotated_lambda, $.modifiers],
 
@@ -109,9 +115,6 @@ module.exports = grammar({
 
     // ambiguity between parameter modifiers in anonymous functions
     [$.parameter_modifiers, $._type_modifier],
-
-    // ambiguity between use of suspend in type and delegation specifiers
-    [$.delegation_specifier, $._type_modifier],
 
     // ambiguity between type modifiers before an @
     [$.type_modifiers],
@@ -1120,6 +1123,7 @@ module.exports = grammar({
       "annotation",
       "internal",
       "operator",
+      "suspend"
       // TODO: More soft keywords
     ),
 

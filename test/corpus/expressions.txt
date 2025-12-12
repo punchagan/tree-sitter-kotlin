@@ -536,6 +536,41 @@ foo.forEach { (index, value) -> 2 }
             (integer_literal)))))))
 
 ================================================================================
+Lambda Expression with suspend
+================================================================================
+
+values.map { suspend { it().await() } }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (call_expression
+    (navigation_expression
+      (simple_identifier)
+      (navigation_suffix
+        (simple_identifier)))
+    (call_suffix
+      (annotated_lambda
+        (lambda_literal
+          (statements
+            (call_expression
+              (simple_identifier)
+              (call_suffix
+                (annotated_lambda
+                  (lambda_literal
+                    (statements
+                      (call_expression
+                        (navigation_expression
+                          (call_expression
+                            (simple_identifier)
+                            (call_suffix
+                              (value_arguments)))
+                          (navigation_suffix
+                            (simple_identifier)))
+                        (call_suffix
+                          (value_arguments))))))))))))))
+
+================================================================================
 Function call with trailing lambda
 ================================================================================
 
