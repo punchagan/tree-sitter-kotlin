@@ -37,13 +37,13 @@ class HelloWorld {
     (type_identifier)
     (class_body
       (function_declaration
-       (simple_identifier)
-       (function_value_parameters)
-       (function_body))
+        (simple_identifier)
+        (function_value_parameters)
+        (function_body))
       (function_declaration
-       (simple_identifier)
-       (function_value_parameters)
-       (function_body)))))
+        (simple_identifier)
+        (function_value_parameters)
+        (function_body)))))
 
 ================================================================================
 Generic class
@@ -78,19 +78,23 @@ class Strings {
     (type_identifier)
     (class_body
       (function_declaration
-       (simple_identifier)
-       (function_value_parameters)
-       (function_body
-        (string_literal (string_content))))
+        (simple_identifier)
+        (function_value_parameters)
+        (function_body
+          (string_literal
+            (string_content))))
       (function_declaration
-       (simple_identifier)
-       (function_value_parameters)
-       (function_body
-        (additive_expression
+        (simple_identifier)
+        (function_value_parameters)
+        (function_body
           (additive_expression
-              (string_literal (string_content))
-              (string_literal (string_content)))
-            (string_literal (string_content))))))))
+            (additive_expression
+              (string_literal
+                (string_content))
+              (string_literal
+                (string_content)))
+            (string_literal
+              (string_content))))))))
 
 ================================================================================
 Class with modifiers
@@ -111,9 +115,9 @@ internal open class Test {
     (class_body
       (function_declaration
         (modifiers
-         (visibility_modifier)
-         (inheritance_modifier)
-         (function_modifier))
+          (visibility_modifier)
+          (inheritance_modifier)
+          (function_modifier))
         (simple_identifier)
         (function_value_parameters)))))
 
@@ -146,6 +150,10 @@ object Singleton {
   fun test()
 }
 
+object : C by c {
+  override fun getDefault() = default
+}
+
 --------------------------------------------------------------------------------
 
 (source_file
@@ -153,8 +161,26 @@ object Singleton {
     (type_identifier)
     (class_body
       (function_declaration
-       (simple_identifier)
-       (function_value_parameters)))))
+        (simple_identifier)
+        (function_value_parameters))))
+  (object_literal
+    (delegation_specifier
+      (explicit_delegation
+        (user_type
+          (type_identifier))
+        (call_expression
+          (simple_identifier)
+          (call_suffix
+            (annotated_lambda
+              (lambda_literal
+                (statements
+                  (function_declaration
+                    (modifiers
+                      (member_modifier))
+                    (simple_identifier)
+                    (function_value_parameters)
+                    (function_body
+                      (simple_identifier))))))))))))
 
 ================================================================================
 Primary constructors
@@ -288,7 +314,8 @@ class Test(x: Int, y: Int) {
         (user_type
           (type_identifier))))
     (class_body
-      (secondary_constructor (function_value_parameters)
+      (secondary_constructor
+        (function_value_parameters)
         (constructor_delegation_call
           (value_arguments
             (value_argument
