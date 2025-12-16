@@ -76,6 +76,8 @@ module.exports = grammar({
     [$.visibility_modifier, $.simple_identifier],
     // "operator" as visibility modifier conflicts with operator as an identifier
     [$.function_modifier, $.simple_identifier],
+    // "override" as member modifier conflicts with override as an identifier
+    [$.member_modifier, $.simple_identifier],
 
     // "<x>.<y> = z assignment conflicts with <x>.<y>() function call"
     [$._postfix_unary_expression, $._expression],
@@ -1003,7 +1005,7 @@ module.exports = grammar({
     // Modifiers
     // ==========
 
-    modifiers: $ => prec.left(repeat1(choice($.annotation, $._modifier))),
+    modifiers: $ => prec.right(repeat1(choice($.annotation, $._modifier))),
 
     parameter_modifiers: $ => repeat1(choice($.annotation, $.parameter_modifier)),
 
@@ -1135,7 +1137,8 @@ module.exports = grammar({
       "annotation",
       "internal",
       "operator",
-      "suspend"
+      "suspend",
+      "override"
       // TODO: More soft keywords
     ),
 

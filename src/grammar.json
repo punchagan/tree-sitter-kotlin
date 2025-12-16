@@ -5203,7 +5203,7 @@
       }
     },
     "modifiers": {
-      "type": "PREC_LEFT",
+      "type": "PREC_RIGHT",
       "value": 0,
       "content": {
         "type": "REPEAT1",
@@ -5662,6 +5662,10 @@
         {
           "type": "STRING",
           "value": "suspend"
+        },
+        {
+          "type": "STRING",
+          "value": "override"
         }
       ]
     },
@@ -6469,6 +6473,10 @@
     ],
     [
       "function_modifier",
+      "simple_identifier"
+    ],
+    [
+      "member_modifier",
       "simple_identifier"
     ],
     [
