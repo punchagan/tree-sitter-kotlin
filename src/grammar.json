@@ -5225,17 +5225,21 @@
       "content": {
         "type": "REPEAT1",
         "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "annotation"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_modifier"
-            }
-          ]
+          "type": "PREC_RIGHT",
+          "value": 1,
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "annotation"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_modifier"
+              }
+            ]
+          }
         }
       }
     },
@@ -6539,11 +6543,6 @@
       "prefix_expression"
     ],
     [
-      "_statement",
-      "prefix_expression",
-      "modifiers"
-    ],
-    [
       "prefix_expression",
       "when_subject"
     ],
@@ -6587,10 +6586,6 @@
       "anonymous_function",
       "function_modifier",
       "simple_identifier"
-    ],
-    [
-      "annotated_lambda",
-      "modifiers"
     ],
     [
       "setter",
