@@ -616,6 +616,50 @@ values.map { suspend { it().await() } }
                           (value_arguments))))))))))))))
 
 ================================================================================
+Lambda literals with multi variable declaration with types
+================================================================================
+
+val baz =
+  { (foo, bar): Pair<Foo, List<Bar>?> -> (bar ?: listOf()) }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (property_declaration
+    (binding_pattern_kind)
+    (variable_declaration
+      (simple_identifier))
+    (lambda_literal
+      (lambda_parameters
+        (multi_variable_declaration
+          (variable_declaration
+            (simple_identifier))
+          (variable_declaration
+            (simple_identifier)))
+        (user_type
+          (type_identifier)
+          (type_arguments
+            (type_projection
+              (user_type
+                (type_identifier)))
+            (type_projection
+              (nullable_type
+                (user_type
+                  (type_identifier)
+                  (type_arguments
+                    (type_projection
+                      (user_type
+                        (type_identifier))))))))))
+      (statements
+        (parenthesized_expression
+          (elvis_expression
+            (simple_identifier)
+            (call_expression
+              (simple_identifier)
+              (call_suffix
+                (value_arguments)))))))))
+
+================================================================================
 Function call with trailing lambda
 ================================================================================
 
